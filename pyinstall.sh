@@ -6,8 +6,7 @@ sudo yum -y install python-pip
 sudo pip install --upgrade
 curl -L  https://raw.github.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
-If $SHELL == "/bin/zsh"
-then
+If $SHELL == "/bin/zsh"; then
 	cat <<EOF>> ~/.zshrc
 	export PATH="/home/$USERNAME/.pyenv/bin:$PATH"
 	eval "$(pyenv init -)"
