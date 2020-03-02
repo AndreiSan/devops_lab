@@ -2,30 +2,22 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   1.0             2020           Initial version
+#   2.0             2020           Initial version
 # --------------------------------------------------------------------
 
+a = input().split()
 
-def check(arg):
-    """function to check if the number is self-dividing or not"""
-    j = 0
-    for i in arg:
-        if (i != '0' and int(arg) % int(i) == 0):
-            j += 1
-        else:
-            return "0"
-    if j == len(arg):
-        return arg
-    else:
-        return "0"
+mas = []
 
-
-mas = input().split()
-rez = []
-n = int(mas[0])
-
-while n <= int(mas[1]):
-    if check(str(n)) != "0":
-        rez.append(n)
-    n += 1
-print(rez)
+for i in range(int(a[0]), int(a[1]) + 1):
+    flag = 0
+    current = i
+    while current != 0:
+        num = current % 10
+        current = int(current / 10)
+        if num == 0 or i % num != 0:
+            flag = 1
+            break
+    if flag == 0:
+        mas.append(i)
+print(mas)
