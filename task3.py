@@ -2,14 +2,14 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   1.0             2020           Initial version
+#   2.0             2020           Initial version
 # --------------------------------------------------------------------
 
 import re
 
 a = str(input())
-b = re.split('\D', a)
-c = re.split('\d', a)
+b = re.split('[^0-9]', a)
+c = re.split('[0-9]', a)
 d = list(filter(None, c))
 
 if len(b) != 3:
