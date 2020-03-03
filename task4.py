@@ -2,27 +2,27 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   1.0             2020           Initial version
+#   2.0             2020           Initial version
 # --------------------------------------------------------------------
 
 
-l = []
+mas = []
 a = int(input())
 for i in range(a):
     b = input().split(" ")
     if b[0] == "insert":
-        l.insert(int(b[1]), int(b[2]))
+        mas.insert(int(b[1]), int(b[2]))
     elif b[0] == "print":
-        print(l)
+        print(mas)
     elif b[0] == "remove":
-        l.remove(int(b[1]))
+        mas.remove(int(b[1]))
     elif b[0] == "append":
-        l.append(int(b[1]))
+        mas.append(int(b[1]))
     elif b[0] == "sort":
-        l.sort()
+        mas.sort()
     elif b[0] == "pop":
-        l.pop()
+        mas.pop()
     elif b[0] == "reverse":
-        l.reverse()
+        mas.reverse()
     else:
         print("Enter correct command")
