@@ -1,0 +1,91 @@
+#!/usr/bin/env python
+# --------------------------------------------------------------------
+# Program by Batura A.
+# Version           Date                Info
+#   1.0             2020           Initial version
+# --------------------------------------------------------------------
+
+
+import psutil
+import json
+import time
+import threading
+import argparse
+
+
+class Getdata:
+    """Use psutil to get current sys parameters"""
+
+    def __init__(self):
+        file = open("results.txt", "w")
+        file.close()
+
+    def ocpu(self):
+        """"get overall cpu usage"""
+        ocpu = str(psutil.cpu_percent(interval=args.refresh_rate))
+        return ocpu
+
+    def ovmu(self):
+        """get overall virtual memory usage"""
+        ovmu = str(psutil.virtual_memory().percent)
+        return ovmu
+
+    def odu(self):
+        """"get overall disk memory usage"""
+        odu = str(psutil.disk_usage('/').percent)
+        return odu
+
+    def io_info(self):
+        """get disk input-output information"""
+        ioi = str(psutil.disk_io_counters().write_time)
+        return ioi
+
+    def net_info(self):
+        """"get network information"""
+        net_info = str(psutil.net_io_counters().packets_sent)
+        return net_info
+
+
+def for_json(dictionary):
+
+    """json output"""
+    with open("results.json", "a") as file:
+        json.dump(dictionary, file, indent=2)
+
+
+def snapshot():
+    threading.Timer(args.refresh_rate, snapshot)
+    get = Getdata()
+    i = 0
+    while True:
+        i += 1
+        if args.file_format == "txt":
+            s = "SNAPSHOT {0}: TIMESTAMP: {1} CPU:{2}% DISK: {3}% RAM: \
+             {4}% io_info: {5} NET_info: {6} \n".format(
+                str(i), str(
+                    time.ctime()), get.ocpu(), get.odu(), get.ovmu(), get.io_info(), get.net_info())
+            results_file = open("results.txt", "a")
+            results_file.write(s)
+            results_file.close()
+        elif args.file_format == "json":
+            data_scope = {
+                "SNAPSHOT": str(i), "Time": str(time.ctime()),
+                "CPU": get.ocpu(),
+                "DISK": get.odu(),
+                "RAM": get.ovmu(),
+                "IO_info": get.io_info(),
+                "NET_info": get.net_info()
+            }
+            for_json(data_scope)
+        else:
+            print("incorrect file type")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("refresh_rate", help="plz input refresh interval", type=int, nargs="?",
+                        const=1, default=300)
+    parser.add_argument("file_format", help="plz input json or txt file format", nargs="?",
+                        const=1, default="txt")
+    args = parser.parse_args()
+    snapshot()
