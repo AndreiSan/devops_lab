@@ -17,7 +17,7 @@ def differ(a, b):
 
 # Find common items in 2 lists without duplicates
 
-a = input().split(" ")
-b = input().split(" ")
+a = input().split()
+b = input().split()
 
 differ(a, b)
