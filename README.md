@@ -51,6 +51,6 @@ You will see the version of the script
 
 > ./pr-stats -u alenaPy -r devops_lab -n 31 -c -ct -cm -p -s
 
-You have to enter your github login/password and then you will see all parameters of the 31 pull request in the alenaPy user's devops_lab repo's
+You have to enter your github login/password and then you will see all parameters of the 31 pull request in the alenaPy user's devops_lab repo's and show all required parameters.
 
 Note, there are not any distributions (*.whl, *.tar.gz, *.rpm and so on, only the project.
