@@ -35,12 +35,13 @@ try:
 except Exception as err:
     print("You don't enter password", err)
 
-data = requests.get(
-    "https://api.github.com/repos/" + args.user + "/" + args.repo +
-    "/pulls/" + args.number, auth=(user, ps)).json()
-
-#with open("data.json", 'w') as file:
-#    json.dump(data, file, indent=2)
+try:
+    data = requests.get(
+        "https://api.github.com/repos/" + args.user + "/" + args.repo +
+        "/pulls/" + args.number, auth=(user, ps)).json()
+except BaseException:
+    print("Something wrong with repository/user/pull req number or link unavailable")
+    exit()
 
 out = "Current pull request is " + data["title"]
 
