@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   1.0             2020           Initial version
+#   1.1             2020           Initial version
 # --------------------------------------------------------------------
 
 
@@ -60,10 +60,9 @@ def snapshot():
     while True:
         i += 1
         if args.file_format == "txt":
-            s = "SNAPSHOT {0}: TIMESTAMP: {1} CPU:{2}% DISK: {3}% RAM: \
-             {4}% io_info: {5} NET_info: {6} \n".format(
-                str(i), str(
-                    time.ctime()), get.ocpu(), get.odu(), get.ovmu(), get.io_info(), get.net_info())
+            s = "SNAPSHOT {0}: TIMESTAMP: {1} CPU:{2}% DISK: {3}% RAM: {4}%\
+              IO_info: {5} NET_info: {6} \n".format(
+                i, time.ctime(), get.ocpu(), get.odu(), get.ovmu(), get.io_info(), get.net_info())
             results_file = open("results.txt", "a")
             results_file.write(s)
             results_file.close()
