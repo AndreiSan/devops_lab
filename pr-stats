@@ -5,36 +5,44 @@
 #   1.0             2020            Initial version
 # --------------------------------------------------------------------
 
-
-
 import argparse
 import requests
 import getpass
 #import json
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument("-u","--user", help="Plz input Github repository owners name", required=True)
-parser.add_argument("-r","--repo", help="Plz input Github repository name", nargs="?", const=1, default="devops_lab")
+parser.add_argument("-r","--repo", help="Plz input Github repository name",
+                    nargs="?", const=1, default="devops_lab")
 parser.add_argument("-n","--number", help="Plz input exact number of pull request",
                     nargs="?", const=1, default="31")
-parser.add_argument("-s","--status", help="Enter if you need to get pull request status", action="store_true")
-parser.add_argument("-c","--created", help="To obtain the date of pull request creating", action="store_true")
+parser.add_argument("-s","--status", help="Enter if you need to get pull request status",
+                    action="store_true")
+parser.add_argument("-c","--created", help="To obtain the date of pull request creating",
+                    action="store_true")
 parser.add_argument("-ct","--commits", help="To obtain the number of commits", action="store_true")
-parser.add_argument("-cm","--comments", help="To obtain the number of comments", action="store_true")
-parser.add_argument("-p","--puller", help="To obtain Github username (login) who open pull request", action="store_true")
-parser.add_argument("-V","--version", action="version", help="Number of version", version="Initial v.1.0, created by Andrei Batura")
+parser.add_argument("-cm","--comments", help="To obtain the number of comments",
+                    action="store_true")
+parser.add_argument("-p","--puller", help="Enter the parameter to get the login of the user "
+                                          "who opened the request", action="store_true")
+parser.add_argument("-V","--version", action="version", help="Number of version",
+                    version="Initial v.1.0, created by Andrei Batura")
 args = parser.parse_args()
 
-user = "AndreiSan"#input()
-ps = getpass.getpass()
+user = input("Plz enter your Github login: ")
+try:
+    ps = getpass.getpass()
+except Exception as err:
+    print("You don't enter password", err)
+
 data = requests.get(
-    "https://api.github.com/repos/" + args.user + "/" + args.repo + "/pulls/" + args.number, auth=(user, ps)).json()
+    "https://api.github.com/repos/" + args.user + "/" + args.repo +
+    "/pulls/" + args.number, auth=(user, ps)).json()
 
 #with open("data.json", 'w') as file:
 #    json.dump(data, file, indent=2)
 
-out = data["title"]
+out = "Current pull request is " + data["title"]
 
 if args.status:
     if data['closed_at'] is None:
@@ -42,7 +50,7 @@ if args.status:
     else:
         out += "\nYour pull request closed at: " + data['closed_at'][:10]
 if args.created:
-    out += "\nCreated date: " + data["created_at"][:10] + " Timestamp: " + data["created_at"][12:19]
+    out += "\nCreated date: " + data["created_at"][:10] + " Timestamp:" + data["created_at"][12:19]
 if args.commits:
     out += "\nNumber of commits at the moment: " + str(data["commits"])
 if args.comments:
@@ -50,4 +58,4 @@ if args.comments:
 if args.puller:
     out += "\nLogin of the user who opened: " + data["user"]["login"]
 
-print (out)
+print(out)
