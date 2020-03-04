@@ -2,7 +2,7 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   1.0             2020           Initial version
+#   2.0             2020           Final version
 # --------------------------------------------------------------------
 
 
@@ -10,16 +10,14 @@ def differ(a, b):
     c = set(a)
     d = set(b)
     z = list(c & d)
-    for i in range(len(z)):
-        z[i] = int(z[i])
+    z = list(map(int, z))
     z.sort()  # Sort result list before output
-    print(z)
     print(*z, sep=" ")
 
 
 # Find common items in 2 lists without duplicates
 
-a = input("Your numbers sequence 1: ").split(" ")
-b = input("Your numbers sequence 2: ").split(" ")
+a = input().split(" ")
+b = input().split(" ")
 
 differ(a, b)
