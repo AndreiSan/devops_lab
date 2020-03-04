@@ -9,7 +9,7 @@
 mas = []
 a = int(input())
 for i in range(a):
-    b = input().split(" ")
+    b = input().split()
     if b[0] == "insert":
         mas.insert(int(b[1]), int(b[2]))
     elif b[0] == "print":
