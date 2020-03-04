@@ -16,5 +16,6 @@ for i in range(a[0], a[1] + 1):
         current //= 10
         if num == 0 or i % num != 0:
             break
-    else: mas.append(i)
+    else: 
+        mas.append(i)
 print(mas)
