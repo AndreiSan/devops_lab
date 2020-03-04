@@ -2,22 +2,19 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   2.0             2020           Initial version
+#   3.0             2020             Final version
 # --------------------------------------------------------------------
 
-a = input().split()
+a = list(map(int, input().split()))
 
 mas = []
 
-for i in range(int(a[0]), int(a[1]) + 1):
-    flag = 0
+for i in range(a[0], a[1] + 1):
     current = i
     while current != 0:
         num = current % 10
-        current = int(current / 10)
+        current //= 10
         if num == 0 or i % num != 0:
-            flag = 1
             break
-    if flag == 0:
-        mas.append(i)
+    else: mas.append(i)
 print(mas)
