@@ -2,17 +2,14 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   1.0             2020           Initial version
+#   2.0             2020           Initial version
 # --------------------------------------------------------------------
 
 
 def leap(y):
     """function to check if the year is leap or not"""
-    if (0 != y % 4) or (y % 400 != 0 and y % 100 == 0):
-        print("False")
-    else:
-        print("True")
+    print(not(0 != y % 4 or (y % 400 != 0 and y % 100 == 0)))
 
 
-year = int(input("Input year to check: "))
+year = int(input())
 leap(year)
