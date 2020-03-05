@@ -10,11 +10,11 @@ This python application which lists files of the specified directory with the fo
 - Order output by filename (by default) by date of creation if starts with -s argument
 
 Full description you can see if you write
->./pr-stats --help
+>./explorer.py --help
 
 or just
 
->  pr-stats -h
+>  explorer.py -h
 
 # How to use it:
 
