@@ -1,6 +1,6 @@
 DevOps Lab 2020: Python Task5
 ***
-## Description of the pr-stats application:
+## Description of the explorer.py application:
 
 This python application which lists files of the specified directory with the following options:
 
@@ -26,7 +26,7 @@ Download explorer.py file. You can run this file in the directory where it is lo
   You can choose next argument options:
 
   - --recurse (or -r) for recursive listening (make sure that you have all necessary rights)
-  - --created (or -c)
+  - --directory (or -d) <path> input path for listening
   - --filter <extension or end of files> input filter extension
   - --sort (or -s) for sorting files by last modified date
 
@@ -36,7 +36,7 @@ Download explorer.py file. You can run this file in the directory where it is lo
 
   Application was developed for CentOS.
 
-## Examples of use script:
+## Examples of use the explorer.py script:
 
 >./explorer.py --version
 
