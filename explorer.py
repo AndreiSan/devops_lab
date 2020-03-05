@@ -16,8 +16,8 @@ parser.add_argument("-d", "--directory", help="Plz enter the dir path",
                     nargs="?", const=1, default="..")
 parser.add_argument("-r", "--recurse", help="Choose this parameter for recursive listening",
                     action="store_true")
-parser.add_argument("-f", "--filter", help="Plz input filter extension if needed "
-                                           "(in format end of the file)",
+parser.add_argument("-f", "--filter", help="Plz input filter extension if needed"
+                                           "( in format end of the file)",
                     nargs="?", const=1, default="")
 parser.add_argument("-s", "--sort", help="Choose this option for sorting by date",
                     action="store_true")
