@@ -13,7 +13,7 @@ from os import path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-d", "--directory", help="Plz enter the dir path",
-                    nargs="?", type=str, const=1, default=".")
+                    nargs="?", const=1, default="..")
 parser.add_argument("-r", "--recurse", help="Choose this parameter for recursive listening",
                     action="store_true")
 parser.add_argument("-f", "--filter", help="Plz input filter extension if needed "
