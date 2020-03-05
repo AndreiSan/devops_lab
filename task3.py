@@ -2,13 +2,17 @@
 # --------------------------------------------------------------------
 # Program by Batura A.
 # Version           Date                Info
-#   3.0             2020            Final version
+#   3.1             2020            Final version
 # --------------------------------------------------------------------
 
 import re
 
 a = input()
-b = list(map(int, re.split('[^0-9]', a)))
+try:
+    b = list(map(int, re.split('[^0-9]', a)))
+except BaseException:
+    print("ERROR")
+    exit(0)
 c = re.split('[0-9]', a)
 d = list(filter(None, c))
 
@@ -38,3 +42,4 @@ elif d[0] == "/":
         print("NO")
 else:
     print("ERROR")
+
